@@ -19,6 +19,6 @@ jobs:
       uses: actions/setup-node@v2.1.1
     - name: Checkout Dropzone
       uses: actions/checkout@v2
-    - run: npm ci
+    - run: npm install
     - run: npm run build --if-present
     - run: npm test
