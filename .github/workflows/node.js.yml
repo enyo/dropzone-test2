@@ -33,6 +33,8 @@ jobs:
     needs: [test]
 
     steps:
+      - name: Checkout Dropzone
+        uses: actions/checkout@v2
       - name: Auto tag
         uses: Klemensas/action-autotag@1.2.3
         with:
