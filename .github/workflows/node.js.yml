@@ -8,17 +8,32 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+     
 jobs:
-  build:
 
+  test:
     runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.1
+      - name: Checkout Dropzone
+        uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build --if-present
+      - run: npm test
+
+  # Auto tag when the package.json version has
+  # changed. A different workflow will see this
+  # tag, publish it, and create a release for it
+  tag:
+    runs-on: ubuntu-latest
+    # This job depends on the test job, and
+    # only runs on the master branch.
+    if: github.ref == 'refs/heads/master'
+    needs: [test]
 
     steps:
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.1.1
-    - name: Checkout Dropzone
-      uses: actions/checkout@v2
-    - run: npm install
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Auto tag
+        uses: Klemensas/action-autotag@1.2.3
+        with:
+          tag_prefix: v
