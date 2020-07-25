@@ -1,3 +1,5 @@
+const sass = require('sass');
+
 module.exports = function (grunt) {
 
   grunt.initConfig({
@@ -6,6 +8,7 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
+        implementation: sass,
         sourcemap: 'none'
       },
 
@@ -96,7 +99,7 @@ module.exports = function (grunt) {
 
 
   grunt.loadNpmTasks("grunt-babel");
-  grunt.loadNpmTasks("grunt-contrib-sass");
+  grunt.loadNpmTasks("grunt-sass");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-uglify");
