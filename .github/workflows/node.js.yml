@@ -39,6 +39,7 @@ jobs:
     needs: [test]
     outputs:
       tagname: ${{ steps.auto_tag.outputs.tagname }}
+      tagsha: ${{ steps.auto_tag.outputs.tagsha }}
     steps:
       - name: Checkout Dropzone
         uses: actions/checkout@v2
@@ -61,7 +62,8 @@ jobs:
           path: dist
       - run: ls -l
       - name: Compress dist folder
-        run: zip --junk-paths dist -r dist
+        # run: zip --junk-paths dist -r dist
+        run: zip dist -r dist
       - name: Release
         id: create_release
         uses: actions/create-release@v1
@@ -70,6 +72,7 @@ jobs:
         with:
           tag_name: "${{ needs.tag.outputs.tagname  }}"
           release_name: "Release ${{ needs.tag.outputs.tagname  }}"
+          tag_message: "Please see the [CHANGELOG](https://github.com/enyo/dropzone-test2/blob/${{ needs.tag.outputs.tagsha }}/CHANGELOG.md) for a list of changes"
           draft: false
           prerelease: false
       - name: Upload Release Asset
