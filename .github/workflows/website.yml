@@ -14,6 +14,8 @@ jobs:
         uses: actions/setup-node@v2.1.1
       - name: Checkout Dropzone
         uses: actions/checkout@v2
+      - run: rm website/.gitignore
+      - run: rm .gitignore
       - run: npm install
       - run: npm run build-website
       - run: ls -la website/
@@ -22,7 +24,6 @@ jobs:
       - run: cp website/index.md website/index3.md
       - run: rm website/index.md
       - run: cp website/index3.md website/index.md
-      - run: rm website/.gitignore
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.1.1
         env:
