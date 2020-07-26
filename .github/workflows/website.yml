@@ -18,6 +18,7 @@ jobs:
       - run: npm run build-website
       - run: ls -la website/
       - name: GitHub Pages
+        if: success()
         uses: crazy-max/ghaction-github-pages@v2.1.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
