@@ -16,7 +16,9 @@ jobs:
         uses: actions/checkout@v2
       - run: npm install
       - run: npm run build-website
-      - run: cp website/index.md index2.md
+      - run: ls -la website
+      - run: ls -la website/index.md
+      - run: echo "foo" > website/index.md
       - run: ls -la website/
       - name: GitHub Pages
         if: success()
