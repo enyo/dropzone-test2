@@ -20,8 +20,6 @@ jobs:
         if: success()
       - run: ls -la website/index.md
         if: success()
-      - run: echo "foo" > website/index.md
-      - run: ls -la website/
       - name: GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2.1.1
