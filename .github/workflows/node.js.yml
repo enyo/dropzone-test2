@@ -63,7 +63,6 @@ jobs:
       - name: Compress dist folder
         run: zip --junk-paths dist -r dist
       - name: Release
-        if: steps.auto_tag.outputs.tagname != null
         id: create_release
         uses: actions/create-release@v1
         env:
