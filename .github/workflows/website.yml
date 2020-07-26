@@ -17,6 +17,22 @@ jobs:
       - run: npm install
       - run: npm run build-website
       - run: ls -la website/
+      - run: rm -rf website
+      -
+        name: Gen dummy page
+        run: |
+          mkdir website
+          cat > website/index.html <<EOL
+          <!doctype html>
+          <html>
+            <head>
+              <title>GitHub Pages deployed!</title>
+            </head>
+            <body>
+              <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a href="https://github.com/marketplace/actions/github-pages">GitHub Pages action</a> successfully.</p>
+            </body>
+          </html>
+          EOL
       - name: GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2.1.1
