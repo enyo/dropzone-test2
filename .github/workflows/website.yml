@@ -17,7 +17,9 @@ jobs:
       - run: npm install
       - run: npm run build-website
       - run: ls -la website
+        if: success()
       - run: ls -la website/index.md
+        if: success()
       - run: echo "foo" > website/index.md
       - run: ls -la website/
       - name: GitHub Pages
