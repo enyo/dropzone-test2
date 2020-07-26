@@ -20,6 +20,7 @@ jobs:
       - run: ls -la website/index.md
       - run: echo "FOOBAR" > website/index2.md
       - run: cp website/index.md website/index3.md
+      - run: touch website/index.md
       - run: rm website/.gitignore
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.1.1
