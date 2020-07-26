@@ -21,6 +21,12 @@ jobs:
       - run: npm install
       - run: npm run build --if-present
       - run: npm test
+      - name: Upload dist folder in case of release
+        if: github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
 
   # Auto tag when the package.json version has
   # changed. A different workflow will see this
@@ -48,8 +54,12 @@ jobs:
     needs: [tag]
     if: github.ref == 'refs/heads/master' && needs.tag.outputs.tagname != null
     steps:
+      - name: Download dist folder
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
       - name: Compress dist folder
-        run: zip --junk-paths dist -r src # TODO: replace with actual build folder
+        run: zip --junk-paths dist -r dist
       - name: Release
         if: steps.auto_tag.outputs.tagname != null
         id: create_release
