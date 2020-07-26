@@ -49,7 +49,6 @@ jobs:
         with:
           tag_name: "${{ steps.auto-tag.outputs.tagname  }}"
           release_name: "Release ${{ steps.auto-tag.outputs.tagname  }}"
-          commitish: "${{ steps.auto-tag.outputs.tagsha }}"
       - name: Publish
         if: steps.auto-tag.outputs.tagname != null
         run: echo running
