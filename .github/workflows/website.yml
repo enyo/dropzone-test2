@@ -1,0 +1,18 @@
+# This workflow will build and push the website on the master branch
+name: Build Website
+
+on:
+  push:
+    branches: [ master ]
+     
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.1
+      - name: Checkout Dropzone
+        uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build-website
