@@ -18,10 +18,13 @@ jobs:
       - run: npm run build-website
       - run: ls -la website
       - run: ls -la website/index.md
+      - run: cat website/index.md
       - run: cp -r website pages
+      - run: ls -la pages
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.1.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           build_dir: pages
+          keep_history: true
