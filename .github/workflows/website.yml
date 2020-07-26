@@ -16,15 +16,11 @@ jobs:
         uses: actions/checkout@v2
       - run: npm install
       - run: npm run build-website
-      - run: ls -la website
-      - run: ls -la website/index.md
-      - run: cat website/index.md
-      - run: cp -r website pages
-      - run: ls -la pages
+      - run: rm website/.gitignore
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.1.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          build_dir: pages
+          build_dir: website
           keep_history: true
