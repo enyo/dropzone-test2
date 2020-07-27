@@ -57,8 +57,9 @@ jobs:
       - name: Auto tag
         id: auto_tag
         uses: Klemensas/action-autotag@1.2.3
-        with:
+        env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
           tag_prefix: v
           tag_message: "Please check the changelog for a list of changes"
 
