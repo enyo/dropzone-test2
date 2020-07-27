@@ -19,7 +19,7 @@ jobs:
       - name: Checkout Dropzone
         uses: actions/checkout@v2
       - name: Read package.json version
-        uses: culshaw/read-package-node-version-actions@v2.0.0
+        uses: pchynoweth/action-get-npm-version@1.0.1
         id: package-version
       - name: Inject package version into javascript file
         uses: jacobtomlinson/gha-find-replace@master
