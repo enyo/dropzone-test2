@@ -12,10 +12,10 @@ jobs:
     steps:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.1
-#       - name: Checkout Dropzone
-#         uses: actions/checkout@v2
-#       - run: rm website/.gitignore
-#       - run: rm .gitignore
+      - name: Checkout Dropzone
+        uses: actions/checkout@v2
+      - run: rm website/.gitignore
+      - run: rm .gitignore
 #       - run: npm install
       #- run: npm run build-website
       - run: mkdir website
