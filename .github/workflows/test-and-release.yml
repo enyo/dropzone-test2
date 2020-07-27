@@ -28,7 +28,7 @@ jobs:
           include: "src/dropzone.js"
           find: "version = \"dev\""
           replace: "version = \"${{ steps.package-version.outputs.version }}\""
-      - if: modifiedFiles != 2
+      - if: modifiedFiles != 1
         run: exit 1
       - run: npm install
       - run: npm run build --if-present
