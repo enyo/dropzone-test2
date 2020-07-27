@@ -2340,7 +2340,7 @@ class Dropzone extends Emitter {
 Dropzone.initClass();
 
 
-Dropzone.version = "5.7.2";
+Dropzone.version = "dev";
 
 
 // This is a map of options for your different dropzones. Add configurations
