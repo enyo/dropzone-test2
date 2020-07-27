@@ -20,15 +20,15 @@ jobs:
         uses: actions/checkout@v2
       - name: Read package.json version
         uses: pchynoweth/action-get-npm-version@1.0.1
-        id: package-version
+        id: package_version
       - name: Inject package version into javascript file
         uses: jacobtomlinson/gha-find-replace@master
-        if: version-replace
+        id: version_replace
         with:
           include: "src/dropzone.js"
           find: "version = \"dev\""
-          replace: "version = \"${{ steps.package-version.outputs.version }}\""
-      - if: modifiedFiles != 1
+          replace: "version = \"${{ steps.package_version.outputs.version }}\""
+      - if: steps.version_replace.outputs.modifiedFiles != 1
         run: exit 1
       - run: npm install
       - run: npm run build --if-present
