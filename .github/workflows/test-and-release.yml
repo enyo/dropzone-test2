@@ -12,6 +12,7 @@ on:
 jobs:
 
   test:
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js environment
@@ -45,7 +46,7 @@ jobs:
   # changed. A different workflow will see this
   # tag, publish it, and create a release for it
   tag:
-    name: Create git tag if package.json version changed
+    name: Create git tag
     runs-on: ubuntu-latest
     # This job depends on the test job, and
     # only runs on the master branch.
@@ -66,7 +67,7 @@ jobs:
           tag_message: "Please check the changelog for a list of changes"
 
   release:
-    name: Create GitHub release with built dist.zip file
+    name: Create GitHub release
     runs-on: ubuntu-latest
     needs: [tag]
     if: github.ref == 'refs/heads/master' && needs.tag.outputs.tagname != null
