@@ -23,10 +23,13 @@ jobs:
         id: package-version
       - name: Inject package version into javascript file
         uses: jacobtomlinson/gha-find-replace@master
+        if: version-replace
         with:
           include: "src/dropzone.js"
           find: "version = \"dev\""
           replace: "version = \"${{ steps.package-version.outputs.version }}\""
+      - if: modifiedFiles != 2
+        run: exit 1
       - run: npm install
       - run: npm run build --if-present
       - run: npm test
