@@ -15,11 +15,10 @@ jobs:
       - name: Checkout Dropzone
         uses: actions/checkout@v2
       - run: rm website/.gitignore
-      - run: rm .gitignore
-#       - run: npm install
-      #- run: npm run build-website
-      #- run: mkdir website
-      - run: echo "YEAH" > website/index.md
+      #- run: rm .gitignore
+      - run: npm install
+      - run: npm run build-website
+#       - run: echo "YEAH" > website/index.md
 #       - run: ls -la website/
 #       - run: ls -la website/index.md
 #       - run: echo "FOOBAR" > website/index2.md
