@@ -18,6 +18,15 @@ jobs:
         uses: actions/setup-node@v2.1.1
       - name: Checkout Dropzone
         uses: actions/checkout@v2
+      - name: Read package.json version
+        uses: culshaw/read-package-node-version-actions@v2.0.0
+        id: package-version
+      - name: Inject package version into javascript file
+        uses: jacobtomlinson/gha-find-replace@master
+        with:
+          include: "src/dropzone.js"
+          find: "version = \"dev\""
+          replace: "version = \"${{ steps.package-version.outputs.version }}\""
       - run: npm install
       - run: npm run build --if-present
       - run: npm test
