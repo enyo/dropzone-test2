@@ -24,6 +24,7 @@ jobs:
       - run: cp website/index.md website/index3.md
       - run: rm website/index.md
       - run: cp website/index3.md website/index.md
+      - run: cp website/index3.md website/index.html
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.1.1
         env:
