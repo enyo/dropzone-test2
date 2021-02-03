@@ -56,8 +56,11 @@
     "marked": "^0.8.2",
     "mocha": "^7.0.0",
     "mocha-headless-chrome": "^3.0.0",
+    "rollup": "^2.38.4",
     "sass": "^1.0.0",
     "sass-loader": "^10.0.0",
+    "sinon": "^9.2.4",
+    "sinon-chai": "^3.5.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
