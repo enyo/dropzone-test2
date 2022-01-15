@@ -53,7 +53,7 @@
     "karma-rollup-preprocessor": "^7.0.5",
     "karma-sinon-chai": "^2.0.2",
     "karma-spec-reporter": "^0.0.32",
-    "marked": "^0.8.2",
+    "marked": "^4.0.10",
     "mocha": "^7.0.0",
     "mocha-headless-chrome": "^3.0.0",
     "rollup": "^2.38.4",
